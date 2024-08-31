@@ -1,4 +1,40 @@
-<%- include('partials/header.ejs') %>
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CanopyView</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <!-- Include the header partial -->
+  <%- include('partials/header') %>
 
+  <!-- Main Content -->
+  <main>
+    <div class="main-content">
+      <h1>Explore the trees around you</h1>
+      <div class="search-container">
+        <input type="text" placeholder="Enter city, province, or country.">
+        <button class="search-button">Search</button>
+      </div>
 
-<%- include('partials/footer.ejs') %>
+      <div class="map-container">
+        <!-- Placeholder for map -->
+        <img src="/images/map-placeholder.png" alt="Map Placeholder">
+      </div>
+
+      <div class="chatbot-container">
+        <div class="chatbot-message">
+          <p>Hello, I am a chatbot. Enter a location in the search bar to get started.</p>
+        </div>
+        <input type="text" placeholder="Ask me something.">
+      </div>
+    </div>
+  </main>
+
+  <!-- Include the footer partial -->
+  <%- include('partials/footer') %>
+</body>
+</html>

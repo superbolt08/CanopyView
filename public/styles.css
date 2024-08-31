@@ -1,0 +1,122 @@
+/* public/styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('./images/background-image.png');
+    background-size: cover; /* Ensures the image covers the entire body */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+
+header {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.logo {
+    font-size: 2rem; /* Increase font size for the logo */
+    font-weight: bold;
+    color: #004d00; /* Dark green color for the logo text */
+    text-decoration: none; /* Removes underline */
+    padding-left: 10px; /* Adds some spacing to the left */
+  }
+
+.nav  {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for better separation */
+}
+
+.nav-links {
+    list-style: none; /* Removes bullet points */
+    display: flex; /* Display items in a row */
+    align-items: right;
+    gap: 20px; /* Adds spacing between items */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    align-items: right;
+    text-decoration: none;
+    color: green;
+    font-weight: bold;
+}
+.nav-links a {
+    text-decoration: none; /* Removes underline */
+    font-size: 1.5rem; /* Increase font size for links */
+    color: #2eb82e; /* Light green color for links */
+    transition: color 0.3s; /* Smooth transition on hover */
+  }
+.nav-links a:hover {
+    color: #004d00; /* Dark green on hover */
+}
+
+.main-content {
+    text-align: center;
+    padding: 2rem;
+}
+
+.main-content h1{ /* title*/
+    font-size: 3rem;
+    color: white;
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5); /* Text shadow */
+}
+
+.search-container {
+    margin-bottom: 2rem;
+}
+
+.search-container input[type="text"] {
+    padding: 10px;
+    width: 250px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    margin-right: 10px;
+}
+
+.search-button {
+    padding: 10px 20px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.map-container {
+    width: 300px;
+    height: 200px;
+    margin: 0 auto;
+    margin-top: 1rem;
+    border: 2px solid black;
+}
+
+.chatbot-container {
+    margin-top: 2rem;
+    border: 1px solid black;
+    padding: 10px;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.chatbot-message {
+    margin-bottom: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #f4f4f4;
+    border-top: 1px solid #ddd;
+    margin-top: 2rem;   
+}

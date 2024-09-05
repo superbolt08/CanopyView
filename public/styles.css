@@ -1,5 +1,6 @@
 /* public/styles.css */
 
+/* nav bar */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -39,14 +40,14 @@ header {
 .nav-links {
     list-style: none; /* Removes bullet points */
     display: flex; /* Display items in a row */
-    align-items: right;
+    justify-content: flex-end;
     gap: 20px; /* Adds spacing between items */
     margin: 0;
-    padding: 0;
+    padding-left: 0;
+    margin-left: auto;
 }
 
 .nav-links li a {
-    align-items: right;
     text-decoration: none;
     color: green;
     font-weight: bold;

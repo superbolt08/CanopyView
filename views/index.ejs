@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CanopyView</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <link rel="stylesheet" href="/styles.css">
   </head>
   <body>
@@ -27,14 +29,16 @@
       <div class="main-content">
       <h1>Explore the trees around you</h1>
       <div class="search-container">
-        <input type="text" placeholder="Enter city, province, or country.">
-        <button class="search-button">Search</button>
-      </div>
+        <form action="/search" method="post" name = "search-form">
+          <input type="text" placeholder="Enter city, province, or country." name="query">
+          <button class="search-button" type="submit">Search</button>
+        </form>
+      </div>    
       
       <div class="sub-content">
         <div class="map-container">
           <!-- Placeholder for map -->
-          <img src="/images/map-placeholder.png" alt="Map Placeholder">
+          <div id="map" style="height: 500px;"></div>
         </div>
         
         <div class="chatbot-container">
@@ -46,7 +50,35 @@
       </div>
     </div>
   </main>
+  <script>
+    // Initialize the map with a default view (London coordinates)
+    var map = L.map('map').setView([51.505, -0.09], 13); 
   
+    // Add a tile layer to display the map using OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18, // Maximum zoom level
+      attribution: '© OpenStreetMap' // Attribution for OpenStreetMap
+    }).addTo(map); // Add the tile layer to the map
+  
+    // If locationMap data is available (i.e., if a search was successful)
+     if (typeof locationMap !== 'undefined') { 
+      var newLat =  locationMap.lat ; // Get the latitude from locationMap
+      var newLng =  locationMap.lng ; // Get the longitude from locationMap
+      
+      // Update the map view to the new coordinates (from the search)
+      map.setView([newLat, newLng], 13);
+  
+      // Add a marker to the map at the new location
+      L.marker([newLat, newLng]).addTo(map)
+
+      //todo: add a default map view !!!!!!!!!!!!!!!!!!!!!!!!!! 
+
+        .bindPopup("Location: <%= locationMap.location %>") // Display the location name in a popup
+        .openPopup(); // Automatically open the popup
+     }
+  </script>
+  
+
   <!-- Include the footer partial -->
   <%- include('partials/footer') %>
 </body>

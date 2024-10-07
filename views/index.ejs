@@ -50,34 +50,40 @@
       </div>
     </div>
   </main>
-  <script>
-    // Initialize the map with a default view (London coordinates)
-    var map = L.map('map').setView([51.505, -0.09], 13); 
-  
-    // Add a tile layer to display the map using OpenStreetMap
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18, // Maximum zoom level
-      attribution: '© OpenStreetMap' // Attribution for OpenStreetMap
-    }).addTo(map); // Add the tile layer to the map
-  
-    // If locationMap data is available (i.e., if a search was successful)
-     if (typeof locationMap !== 'undefined') { 
-      var newLat =  locationMap.lat ; // Get the latitude from locationMap
-      var newLng =  locationMap.lng ; // Get the longitude from locationMap
-      
-      // Update the map view to the new coordinates (from the search)
-      map.setView([newLat, newLng], 13);
-  
-      // Add a marker to the map at the new location
-      L.marker([newLat, newLng]).addTo(map)
+   <!-- Hidden div to store locationMap data -->
 
-      //todo: add a default map view !!!!!!!!!!!!!!!!!!!!!!!!!! 
+   <script>
+       // Initialize the map with a default view (London coordinates)
+       var map = L.map('map').setView([51.505, -0.09], 13); 
+       
+       // Add a tile layer to display the map using OpenStreetMap
+       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+           maxZoom: 18, // Maximum zoom level
+           attribution: '© OpenStreetMap' // Attribution for OpenStreetMap
+       }).addTo(map); // Add the tile layer to the map
 
-        .bindPopup("Location: <%= locationMap.location %>") // Display the location name in a popup
-        .openPopup(); // Automatically open the popup
-     }
-  </script>
-  
+       // Get the location data from the hidden div
+       var locationData = document.getElementById('locationData').getAttribute('data-location');
+       var locationMap = JSON.parse(locationData); // Parse the JSON string into a JavaScript object
+
+       // Check if locationMap has valid data
+       if (locationMap && locationMap.lat && locationMap.lng) {
+           var newLat = locationMap.lat; // Get the latitude from locationMap
+           var newLng = locationMap.lng; // Get the longitude from locationMap
+           var locationName = locationMap.location; // Get the location name
+
+           // Update the map view to the new coordinates (from the search)
+           map.setView([newLat, newLng], 13);
+
+           // Add a marker to the map at the new location
+           L.marker([newLat, newLng]).addTo(map)
+          // Conditionally bind the popup
+          if (locationMap != null) {
+              marker.bindPopup("Location: " + locationName) // Display the location name in a popup
+              }
+               marker.openPopup(); // Automatically open the popup
+       }
+   </script>
 
   <!-- Include the footer partial -->
   <%- include('partials/footer') %>

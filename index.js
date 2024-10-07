@@ -28,6 +28,8 @@ app.post("/search", async (req, res) => {
         const response = await axios.get(APIURL);
         const data = response.data;
         
+        let locationMap = null; // Default to null
+        
         // Check if the API returned valid results
         if (data.results && data.results.length > 0) {
             // Extract latitude and longitude from the first result
@@ -41,7 +43,7 @@ app.post("/search", async (req, res) => {
             res.render("index", { locationMap });
         } else {
             // If no results found, respond with a 404 status
-            res.status(404).send("No results found");
+            res.render("index", { locationMap: null });
         }
     } catch (error) {
         // Handle any errors that occur during the API call
